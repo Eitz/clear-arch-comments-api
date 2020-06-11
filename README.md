@@ -1,3 +1,5 @@
+This repo is a WIP Typescript version of the brilliant https://github.com/dev-mastery/comments-api
+
 # DevMastery Comments Microservice API
 To manage comments on various Dev Mastery properties.
 
