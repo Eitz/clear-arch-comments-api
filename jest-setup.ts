@@ -12,6 +12,15 @@ const mongod =
     autoStart: false,
   });
 
+// TODO: handle forgotten edge cases
+// process.on("unhandledRejection", (reason, promise) => {
+//   console.error("Unhandled Rejection at:", promise, "reason:", reason);
+// });
+
+// process.on("uncaughtExceptionMonitor", (error, origin) => {
+//   console.error(error, origin);
+// });
+
 module.exports = async () => {
   if (!mongod.runningInstance) {
     await mongod.start();

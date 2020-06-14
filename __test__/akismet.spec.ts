@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { Method } from "axios";
 import qs from "querystring";
 import makeFakeComment from "./fixtures/comment";
 import dotenv from "dotenv";
@@ -15,7 +15,7 @@ describe.skip("akismet", () => {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       url: process.env.DM_SPAM_API_URL,
-      method: "post",
+      method: "POST" as Method,
       data: qs.stringify({
         blog: "https://devmastery.com",
         user_ip: comment.source.ip,

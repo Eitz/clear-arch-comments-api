@@ -6,7 +6,7 @@
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "types": ["node", "jest"]
+    "types": ["jest", "node"]
   },
   "include": ["./src/**/*", "./__test__/**/*"]
 }

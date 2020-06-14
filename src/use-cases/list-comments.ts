@@ -3,28 +3,28 @@ export default function makeListComments({ commentsDb }) {
     if (!postId) {
       throw new Error("You must supply a post id.");
     }
+
     const comments = await commentsDb.findByPostId({
       postId,
       omitReplies: false,
     });
-    const nestedComments = nest(comments);
-    return nestedComments;
 
-    // If this gets slow introduce caching.
-    function nest(comments) {
-      if (comments.length === 0) {
-        return comments;
-      }
-      return comments.reduce((nested, comment) => {
-        comment.replies = comments.filter(
-          (reply) => reply.replyToId === comment.id
-        );
-        nest(comment.replies);
-        if (comment.replyToId == null) {
-          nested.push(comment);
-        }
-        return nested;
-      }, []);
-    }
+    const nestedComments = nestReplies(comments);
+    return nestedComments;
   };
+}
+
+// If this gets slow introduce caching.
+function nestReplies(replies) {
+  if (replies.length === 0) {
+    return replies;
+  }
+  return replies.reduce((nested, comment) => {
+    comment.replies = replies.filter((reply) => reply.replyToId === comment.id);
+    nestReplies(comment.replies);
+    if (comment.replyToId == null) {
+      nested.push(comment);
+    }
+    return nested;
+  }, []);
 }
