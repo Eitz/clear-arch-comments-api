@@ -19,7 +19,7 @@
     "testEnvironment": "./jest-mongo.ts"
   },
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "cuid": "^2.1.8",
     "express": "^4.17.1",
